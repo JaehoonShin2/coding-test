@@ -1,7 +1,7 @@
 import sys
 from queue import PriorityQueue
 
-sys.stdin = open('C:/Users/R/Desktop/python_input/bj_1927.txt')
+sys.stdin = open('C:/Users/R/Desktop/python_input/bj_11279.txt')
 
 n = int(sys.stdin.readline().rstrip())
 
