@@ -9,8 +9,6 @@ target = 1
 for i in list:
     if target < i:
         break
-    print(target)
-    print(i)
     target += i
     
 
