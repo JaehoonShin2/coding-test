@@ -4,18 +4,16 @@ n, m = (map(int, sys.stdin.readline().split()))
 
 s = []
 
-def dfs():
+def dfs(start):
     if len(s) == m:
         print(' '.join(map(str, s)))
         return
     else:
-        for i in range(1, n+1):
-            if i in s:
-                continue
-            else:
+        for i in range(start, n+1):
+            if i not in s:
                 s.append(i)
-                dfs()
+                dfs(i+1)
                 s.pop()
 
-dfs()
+dfs(1)
 
