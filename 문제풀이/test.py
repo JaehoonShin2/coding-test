@@ -1,44 +1,48 @@
 import sys
 
-sys.stdin = open('C:/Users/R/Desktop/python_input/bj_14888.txt')
+sys.stdin = open('C:/Users/R/Desktop/python_input/bj_14889.txt')
 
 n = int(sys.stdin.readline().rstrip())
-data = list(map(int, sys.stdin.readline().split()))
-add, sub, mul, div = map(int, sys.stdin.readline().split())
-
-min_value = 1e9
-max_value = -1e9
+graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+start = []
+link = []
 
 
-def dfs(cnt, arr):
-#cnt = 데이터의 갯수
-#arr = 데이터에서 연산이 완료된 뒤의 값
-
-    global add, sub, mul, div, min_value, max_value
-
-    if cnt == n:
-        min_value = min(min_value, arr)
-        max_value = max(max_value, arr)
+def dfs(idx):
+    #최종적으로 반환하려는 값
+    global min_value
+    #백트래킹의 탈출조건
+    if idx == n // 2 :
+        startSum = 0
+        linkSum = 0
+        #0에서 n까지 반복을 돌면서 만약 i값이 start에 없다면 link 리스트에 담아준다.
+        for i in range(0, n):
+            if i not in start:
+                link.append(i)
+        
+        for i in range(0, n//2 -1):
+            for j in range(i, n//2):
+                startSum += graph[  start[i]  ][  start[j]  ] + graph[ start[j] ] [ start[i] ]
+                linkSum += graph[ link[i] ][ link[j] ] + graph[ link[j] ][ link[i] ]
+        diff = abs(startSum - linkSum)
+        if min_value > diff:
+            min_value = diff
+        # 링크 리스트는 항상 계산이 끝나면 비워줘야한다.
+        link.clear()
         return
     else:
-        if add > 0:
-            add -= 1
-            dfs(cnt+1, arr + data[cnt])
-            add += 1
-        if sub > 0:
-            sub -= 1
-            dfs(cnt+1, arr - data[cnt])
-            sub += 1
-        if mul > 0:
-            mul -= 1
-            dfs(cnt+1, arr * data[cnt])
-            mul += 1
-        if div > 0:
-            div -= 1
-            dfs(cnt+1, int(arr / data[cnt]))
-            div += 1
+        for i in range(n):
+            #한 번 들어온 데이터가 두 번 이상 들어오면 안되기 때문에 확인
+            if i in start: 
+                continue
+            #만약 start 리스트의 데이터가 0이상이고, start 리스트에...?
+            if len(start) > 0 and start[len(start)-1] > i:
+                continue
+            start.append(i)
+            dfs(idx + 1)
+            start.pop()
 
-dfs(1, data[0])
-
+min_value = 1e9
+dfs(0)
 print(min_value)
-print(max_value)
+
