@@ -4,6 +4,7 @@ sys.stdin = open('C:/Users/R/Desktop/python_input/bj_14889.txt')
 
 n = int(sys.stdin.readline().rstrip())
 graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+
 start = []
 link = []
 
@@ -20,8 +21,8 @@ def dfs(idx):
             if i not in start:
                 link.append(i)
         
-        for i in range(0, n//2 -1):
-            for j in range(i, n//2):
+        for i in range(n//2 -1):
+            for j in range(i+1, n//2):
                 startSum += graph[  start[i]  ][  start[j]  ] + graph[ start[j] ] [ start[i] ]
                 linkSum += graph[ link[i] ][ link[j] ] + graph[ link[j] ][ link[i] ]
         diff = abs(startSum - linkSum)
@@ -32,15 +33,14 @@ def dfs(idx):
         return
     else:
         for i in range(n):
-            #한 번 들어온 데이터가 두 번 이상 들어오면 안되기 때문에 확인
-            if i in start: 
-                continue
             #만약 start 리스트의 데이터가 0이상이고, start 리스트에...?
             if len(start) > 0 and start[len(start)-1] > i:
                 continue
-            start.append(i)
-            dfs(idx + 1)
-            start.pop()
+            #한 번 들어온 데이터가 두 번 이상 들어오면 안되기 때문에 확인
+            if i not in start: 
+                start.append(i)
+                dfs(idx + 1)
+                start.pop()
 
 min_value = 1e9
 dfs(0)
