@@ -1,6 +1,6 @@
 import sys
 
-# sys.stdin = open('C:/Users/R/Desktop/python_input/bj_13305.txt')
+sys.stdin = open('C:/Users/R/Desktop/python_input/bj_13305.txt')
 
 n = int( sys.stdin.readline().rstrip())
 
