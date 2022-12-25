@@ -3,7 +3,6 @@ import sys
 sys.stdin = open('C:/Users/R/Desktop/python_input/bj_2606.txt')
 
 c = int(sys.stdin.readline().rstrip())
-
 n = int(sys.stdin.readline().rstrip())
 
 graph = [[] for _ in range(c+1)]
