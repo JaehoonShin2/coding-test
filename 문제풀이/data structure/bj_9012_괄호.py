@@ -19,3 +19,4 @@ for i in arr:
         print('YES')
     else : 
         print('NO')
+
