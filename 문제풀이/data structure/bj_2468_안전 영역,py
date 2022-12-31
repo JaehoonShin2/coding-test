@@ -1,8 +1,6 @@
 import sys
 from collections import deque
 
-sys.stdin = open('C:/Users/R/Desktop/python_input/bj_2468.txt')
-
 #  높이는 1이상 100 이하의 정수
 #  시간제한 1 초
 
