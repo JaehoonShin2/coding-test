@@ -18,8 +18,6 @@ for i in range(n):
         if graph[i][j] == 2:
             virusList.append([i, j])
 
-
-
 steps = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 # 바이러스가 완전히 퍼지게 되는 bfs 함수
