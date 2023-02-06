@@ -9,50 +9,25 @@ sys.stdin = open('/Users/s/Desktop/C/dev_study/coding-test/bj_2512.txt')
 # M은 N 이상 1,000,000,000 이하이다. 
 
 n = int(sys.stdin.readline().rstrip())
-nArr = list(map(int, sys.stdin.readline().split()))
+arr = list(map(int, sys.stdin.readline().split()))
 m = int(sys.stdin.readline().rstrip())
 
-nArr.sort()
+start, end = 0, max(arr)
 
-def binary(start, end, target):
-    
-    while start <= end: 
-        mid = (start + end) // 2
-        if mid == target:
-            print(mid)
-            break
-        elif mid < target:
-            start = mid+1
-        else:
-            end = mid-1
+if m >= sum(arr):
+    print(max(arr))
+else:
+    while start <= end:  # 이분탐색
+        mid = (start + end) // 2  # 상한액 설정
+        curr = 0
+        for i in arr:
+            if i >= mid:  # 요청한 금액이 상한액 이상이라면
+                curr += mid  # 상한액 더하기
+            else:  # 상한액 미만이라면
+                curr += i  # 요청한 금액 더하기
+        if curr <= m:  # 예산 총액이 총 예산 이하라면
+            start = mid + 1
+        else:  # 예산 총액이 총 예산을 초과한다면
+            end = mid - 1
 
-
-if m >= sum(nArr) :
-    print(max(nArr)) 
-else :
-    num = m // n
-    for i in range(n):
-        if num > nArr[i]:
-            m -= nArr[i]
-        else:
-            r = m // (n-i)
-            print(r)
-            break
-        
-# 110 120 125 150 // 485//4
-# 110 120 || 125 150
-# 125 150 // (485-110-120)//2
-# 125 || 150 
-# 150 // (485-110-120-125)
-
-def binary(arr, start, end, target):
-    
-    while start <= end:
-        mid = (start + end) // 2
-        m = target // n
-        
-        if arr[mid] <= m:
-            for i in range(mid):
-                m -= arr[i]
-        else : 
-            
+    print(end)
