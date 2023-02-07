@@ -27,7 +27,9 @@ else:
                 curr += i  # 요청한 금액 더하기
         if curr <= m:  # 예산 총액이 총 예산 이하라면
             start = mid + 1
+            print(start, 'tt')
         else:  # 예산 총액이 총 예산을 초과한다면
             end = mid - 1
+            print(end, 'dd')
 
     print(end)
