@@ -1,7 +1,5 @@
 import sys
 
-sys.stdin = open('/Users/s/Desktop/C/dev_study/coding-test/python_input/bj_1072.txt')
-
 x, y = map(int, sys.stdin.readline().split())
 z = ( y * 100 )// x
 
