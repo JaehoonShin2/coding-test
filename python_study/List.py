@@ -1,3 +1,4 @@
+
 # 리스트(List) vs 딕셔너리(Dictionary) vs 집합(Set)
 #
 # 리스트는 mutable, 
@@ -15,5 +16,6 @@ dict = {}
 # 집합(set) 의 경우는 중복이 허용되지 않는, java에서의 set과 동일하다.
 set = ()
 
+# numpy : 넘파이
 
 
