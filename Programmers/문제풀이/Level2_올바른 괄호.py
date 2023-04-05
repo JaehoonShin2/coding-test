@@ -7,7 +7,7 @@ def solution(s):
     # 마지막 값은 반드시 ')' 이어야만 한다.
     o = 0
     for i in s:
-           if o < 0:
+        if o < 0:
             return False
         
         if i == '(':
@@ -20,7 +20,7 @@ def solution(s):
     else: 
         return False
     
-    def solution(s):
+def solution(s):
     
     answer = True
 
