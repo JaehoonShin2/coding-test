@@ -70,4 +70,4 @@ park = ["OSO","OOO","OXO","OOO"]
 routes = ["E 2","S 3","W 1"]
 
 
-print(solution(park1, routes1))
+print(solution(park, routes))
