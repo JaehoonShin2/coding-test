@@ -18,7 +18,6 @@ def solution(wallpaper):
                 if end_row < row_idx + 1:
                     end_row = row_idx + 1
                 
-                print(row_idx, col_idx)
     
     
     answer = [start_row, start_col, end_row , end_col]
