@@ -1,5 +1,3 @@
-from collections import deque
-
 def solution(progresses, speeds):
     
     answer = []
@@ -24,13 +22,13 @@ def solution(progresses, speeds):
        
         if start_num >= cnt_answer[idx]:
             result_cnt += 1
-            idx += 1
         
         else:
             answer.append(result_cnt)
             start_num = cnt_answer[idx]
-            idx += 1
             result_cnt = 1
+            
+        idx += 1
     
     answer.append(result_cnt)
          
@@ -42,4 +40,4 @@ speeds1=[1, 30, 5]
 progresses2=[95, 90, 99, 99, 80, 99]
 speeds2=[1, 1, 1, 1, 1, 1]
 
-print(solution(progresses1, speeds1))
+print(solution(progresses2, speeds2))
