@@ -28,4 +28,8 @@ def solution(n):
     return ans
     
 
+def solution(n):
+    print(bin(n))
+    return bin(n).count('1')
+
 print(solution(10))

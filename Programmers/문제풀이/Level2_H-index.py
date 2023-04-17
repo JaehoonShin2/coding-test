@@ -40,7 +40,3 @@ def solution_2(citations):
     return answer
 
 print(solution_2(citations))
-    
-    
-    
-
