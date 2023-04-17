@@ -10,8 +10,6 @@ def solution(citations):
     counter_cit = Counter(citations)
     sort_cit = sorted(counter_cit.items(), key= lambda x: x[0]  ,reverse=True)
 
-    print(sort_cit)
-
     for i in range(1000, 0, -1):
         temp_h = 0
         for idx, node in sort_cit:
@@ -31,4 +29,18 @@ citations = [3, 0, 6, 1, 5]
 
 print(solution(citations))
 
+def solution_2(citations):
+    # 인용 횟수를 내림차순으로 정렬
+    sorted_cit = sorted(citations, reverse=True)
+    # idx == h 이상의 인용된 논문
+    # value == h
+    
+    answer = max(map(min, enumerate(sorted_cit, start=1)))
+    
+    return answer
+
+print(solution_2(citations))
+    
+    
+    
 
