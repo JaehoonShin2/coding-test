@@ -14,22 +14,23 @@ def bfs(number, current):
     
     q = deque()
     q.append((current_row, current_col))
-    visited = [[0] * 3 for _ in range(4)]
+    dist = [[0] * 3 for _ in range(4)]
     while q:
+        print('q : {}'.format(q))
         row, col = q.popleft()
         
         if keypad[row][col] == number:
-            return visited[row][col]
+            return dist[row][col]
         
         for m in move:
             nrow, ncol = row + m[0], col + m[1]
             # 0 에서 로우&컬럼 사이의 값 중에서
             if nrow >= 0 and nrow < 4 and ncol >= 0 and ncol < 3:
                 # 미방문한 노드 중에서
-                if not visited[nrow][ncol]:
-                    visited[nrow][ncol] = visited[row][col] + 1
+                if not dist[nrow][ncol]:
+                    dist[nrow][ncol] = dist[row][col] + 1
                     if keypad[nrow][ncol] == number:
-                        return visited[nrow][ncol]
+                        return dist[nrow][ncol]
                     else:
                         q.append((nrow, ncol))
 
@@ -66,13 +67,11 @@ def solution(numbers, hand):
                     
     return answer
 
-                    
-
-# numbers=[1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5]
-# hand= "right"
-
-numbers=[4, 3, 2, 8]
+numbers=[1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5]
 hand= "right"
+
+# numbers=[4, 3, 2, 8]
+# hand= "right"
     
 print(solution(numbers, hand))
 
