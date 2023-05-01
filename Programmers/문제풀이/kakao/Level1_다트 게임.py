@@ -1,42 +1,62 @@
-
+from collections import deque
 
 def solution(dartResult):
-    
-    answer = 0
-    
-    area = {"S":1, "D":2, "T":3}
-    option = {'*':2, '#':-1}
-    num_list = []
-    
-    for idx, dart in enumerate(dartResult):
-        if dart in ['S', 'D', 'T']:
-            current_num = int(dartResult[idx-1])
-            current_area = dartResult[idx]
-            num_list.append(pow(current_num, area[current_area]))
+    answer = []
+    n1 = ""
 
-        elif dart in ['*','#']:
-            num_list.append(dart)
-    
-    nnn = []
-    aaa = []
-    
-    print(num_list)
-    
-    for idx in range(len(num_list)-1):
-        if num_list[idx] in range(0, 11):
-            nnn.append(num_list[idx])
-            if num_list[idx+1] in ['*', '#']:
-                aaa.append(num_list[idx+1])
-            else:
-                aaa.append('')
-    
-    print(nnn)
-    print(aaa)   
-    
-    
-    return answer
+    for j in dartResult:
+        n1 += j
+
+        # 문자열인지 확인하는 함수
+        if j.isalpha():
+            answer.append(n1[:-1])
+            answer.append(j)
+            n1 = ""
+            print('isalpha : {}'.format(answer))
+        if j == "*" or j == "#":
+            answer.append(j)
+            n1 = ""
+
+    q = deque(answer)
+    cnt = []
+    for y in range(len(q)):
+        n2 = q.popleft()
+
+        if n2 == "S" and cnt:
+            cnt[-1] = int(cnt[-1])**1
+        elif n2 == "D" and cnt:
+            cnt[-1] = int(cnt[-1])**2
+        elif n2 == "T" and cnt:
+            cnt[-1] = int(cnt[-1])**3
+        else:
+            cnt.append(n2)
+
+    # * 이나 # 이 없으면 그냥 모두 더해서 리턴.
+    if "*" not in cnt and "#" not in cnt:
+        return sum(cnt)
+
+    final = []
+
+    for j in cnt:
+        if j == "#" and final:
+            final[-1] = final[-1]*(-1)
+            print(final)
+            continue
+        if j == "*" and final:
+            if len(final) == 1:
+                final[-1] = final[-1]*2
+            if len(final) >= 2:
+                final[-1] = final[-1]*2
+                final[-2] = final[-2]*2
+
+            continue
+
+        final.append(j)
+    return sum(final)
 
 
-dartResult="1D#2S*3S"
-# dartResult="1T2D3D#"
+
+
+# dartResult="1D#2S*3S"
+dartResult="1T2D3D#"
 print(solution(dartResult))
