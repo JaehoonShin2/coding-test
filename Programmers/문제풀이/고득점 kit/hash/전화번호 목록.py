@@ -1,13 +1,14 @@
-
 def solution(phone_book):
+    dic = {}
+    for i in phone_book:
+        dic[i] = 0
+    for i in dic:
+        for j in range(1, len(i)):
+            if (i[:j] in dic):
+                return False
 
-    d = dict()
-    for idx, phone in enumerate(phone_book):
-        list = []
+    return True
             
-
-    
-        
 
 phone_book=["12","123","1235","567","88"]
 
