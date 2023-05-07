@@ -10,13 +10,13 @@ def solution(genres, plays):
     
     l = []
     for k, v in d.items():
-       l.append((k, sum(v[0])))
+       l.append((k, sum(x[0] for x in v)))
     
     l.sort(key= lambda x: x[1], reverse=True)
 
     for s in l:
         m = d[s[0]]
-        m.sort(reverse=True)
+        m.sort(key=lambda x: (-x[0], x[1]))
         print(m)
         for idx, v in enumerate(m):
             if idx < 2:
