@@ -18,4 +18,21 @@ def solution(prices):
 
 prices=[1, 2, 3, 2, 3]
 
-print(solution(prices))
+
+def solution2(prices):
+    stack = []
+    answer = [0] * len(prices)
+    for i in range(len(prices)):
+        
+        while stack != [] and  \
+            stack[-1][1] > prices[i]:
+            print(stack[-1][1])
+            past, _ = stack.pop()
+            answer[past] = i - past
+            
+        stack.append([i, prices[i]])
+    for i, s in stack:
+        answer[i] = len(prices) - 1 - i
+    return answer
+
+print(solution2(prices))
