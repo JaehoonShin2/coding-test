@@ -1,4 +1,3 @@
-
 def solution(babbling):
     answer = 0
     speak = ["aya", "ye", "woo", "ma"]
