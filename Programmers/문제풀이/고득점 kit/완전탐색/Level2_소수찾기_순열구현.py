@@ -5,7 +5,6 @@ def solution(numbers):
     for l in range(1, len(numbers)+1):
         latters = []
         dfs(l, latters)
-        print(permutation)
     
     num_set = set()
     for p in permutation:
@@ -24,16 +23,13 @@ def find(num):
     global answer
     
     if num > 1:
-        print(num)
-        for i in range(2, num+1):
-            if i == num:
+        for i in range(2, num//2+1):
+            if i == num//2:
                 answer += 1
             if num%i == 0:
                 break
     else:
         return        
-    
-
 
 def dfs(l, latters):
         
