@@ -8,6 +8,6 @@ def solution(food):
             answer.append(new_f)
         
     return ''.join(answer)
-
-food=[1, 7, 1, 2]
+    
+food =[1, 7, 1, 2]
 print(solution(food))
