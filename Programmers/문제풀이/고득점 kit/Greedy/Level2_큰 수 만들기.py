@@ -2,7 +2,8 @@ def solution(number, k):
     stack = []
     for n in number:
         while stack and stack[-1] < n and k > 0:
-            print(stack.pop())
+            stack.pop()
+            # print(stack.pop())
             k -= 1
         stack.append(n)
         print(stack)
