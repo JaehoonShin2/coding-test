@@ -1,6 +1,7 @@
 def solution(d, budget):
     answer = 0
     d.sort()
+    
     for b in d:
         if budget - b >= 0:
             budget -= b
