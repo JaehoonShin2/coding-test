@@ -3,24 +3,27 @@ import heapq as h
 def solution(n):
     
     cnt = 0
-    q = []
-    h.heappush(q,'4')
-    h.heappush(q,'13')
+    q = [4, 13]
     l = []
     
-    while True:
-        if cnt >= n:
-            break
+    while cnt < n:
         
         num = h.heappop(q)
-        if num+'4' not in q:
-            h.heappush(q,num+'4')
-        if num+'13' not in q:
-            h.heappush(q,num+'13')
+        print('heapq 의 num : {}'.format(num))
+        nw = int(str(num)+'4')
+        if nw not in q:
+            print(nw)
+            h.heappush(q, nw)
+        nw = int(str(num)+'13')
+        if nw not in q:
+            print(nw)
+            h.heappush(q, nw)
         l.append(int(num))
         cnt += 1
-    
+        print('q의 변경 이후 상태값 : {}'.format(q))
+            
+    print(l)
     return l[n-1]
     
-n=5000
+n=3
 print(solution(n))
