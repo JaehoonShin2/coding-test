@@ -1,30 +1,24 @@
-from collections import deque
+import heapq as h
 
 def solution(n):
     
     cnt = 0
-    q = deque()
-    q.append('4')
-    q.append('13')
+    q = []
+    h.heappush(q,'4')
+    h.heappush(q,'13')
     l = []
     
     while True:
         if cnt >= n:
             break
         
-        num = q.popleft()
-        q.append(num+'4')
-        q.append(num+'13')
+        num = h.heappop(q)
+        if num+'4' not in q:
+            h.heappush(q,num+'4')
+        if num+'13' not in q:
+            h.heappush(q,num+'13')
         l.append(int(num))
         cnt += 1
-    
-    l.sort()
-    
-    for ll in range(1,len(l)-1):
-        if l[ll] > l[ll-1]:
-            continue
-        else:
-            print('error')
     
     return l[n-1]
     
