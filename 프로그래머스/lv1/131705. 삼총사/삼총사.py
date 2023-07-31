@@ -2,10 +2,8 @@ from itertools import combinations as cb
 
 def solution(number):
     
-    answer = 0
-    l = len(number)
-    c = list(cb(range(l), 3))
-    for arr in c:
-        if sum(number[x] for x in arr) == 0:    
-            answer += 1
-    return answer
+    cnt = 0
+    for i in cb(number, 3):
+        if sum(i) == 0:    
+            cnt += 1
+    return cnt
