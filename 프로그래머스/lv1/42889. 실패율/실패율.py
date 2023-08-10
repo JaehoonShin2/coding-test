@@ -12,5 +12,5 @@ def solution(N, stages):
         else:
             stage_failure_rate[i] = 0
     
-    answer = sorted(sorted(stage_failure_rate), key=lambda x:stage_failure_rate[x], reverse=True)
-    return list(map(int, answer))
+    answer = sorted(stage_failure_rate, key=lambda x:stage_failure_rate[x], reverse=True)
+    return answer
